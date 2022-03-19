@@ -24,7 +24,7 @@ pygame.time.set_timer(timer,1)
 attackList = []
 playerHealth = 50
 
-font = pygame.font.SysFont("Calibri",50,True,False)
+font = pygame.font.Font("Assets/Fonts/Pixeltype.ttf",75)
 gameDone = False
 
 while not gameDone:
@@ -45,12 +45,17 @@ while not gameDone:
                 break
         else:
             screen.fill((94, 129, 162))
-            title_message = font.render("College Simulator", True, (111, 196, 169))
+            title_message = font.render("College Simulator", True, (0,0,0))
             title_message_rect = title_message.get_rect(center=(300, 300))
-            play_message = font.render("Hit Enter To Play", False, (111,196,169))
+            play_message = font.render("Hit Enter To Play", False, (0,0,0))
             play_message_rect = play_message.get_rect(center = (300,350))
-            screen.blit(title_message, (250, 300))
-            screen.blit(play_message,(250,400))
+            duckie_menu = pygame.transform.scale(pygame.image.load('Assets/Sprites/duckie3.0.png'),(200,200))
+            duckie_menu_rect = duckie_menu.get_rect(center = (400,400))
+
+            screen.blit(title_message, (225, 100))
+            screen.blit(play_message,(225,200))
+            screen.blit(duckie_menu, duckie_menu_rect)
+
             pygame.display.update()
 
     levelDone = False
