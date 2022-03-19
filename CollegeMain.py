@@ -41,7 +41,6 @@ while not gameDone:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            
             if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
 
                 # levelDone = False
@@ -88,13 +87,13 @@ while not gameDone:
             keys = pygame.key.get_pressed()
 
             if len(attackList) != 0:
-                if keys[pygame.K_LEFT]:
+                if keys[pygame.K_LEFT] or keys[pygame.K_a]:
                     player_rect.x -= vel
-                if keys[pygame.K_RIGHT]:
+                if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                     player_rect.x += vel
-                if keys[pygame.K_UP]:
+                if keys[pygame.K_UP] or keys[pygame.K_w]:
                     player_rect.y -= vel
-                if keys[pygame.K_DOWN]:
+                if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                     player_rect.y += vel
 
             if player_rect.y < 65:
