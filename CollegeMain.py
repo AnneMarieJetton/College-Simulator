@@ -4,6 +4,7 @@ import pygame
 import sys
 import random
 from functions import enemyFunctions
+from functions import attackFunctions
 
 
 
@@ -19,6 +20,9 @@ x = 50
 y = 275
 player_surf = pygame.image.load("Assets/Sprites/TestPlayer.png")
 player_rect = player_surf.get_rect(center = (x,y))
+
+attack_surf = pygame.image.load("Assets/Sprites/PelletAttackTest.png")
+
 clock = pygame.time.Clock()
 fps = 25
 
@@ -27,6 +31,9 @@ height = 60
 vel = 5
 
 level = 1
+timer = pygame.USEREVENT + 1
+pygame.time.set_timer(timer,1)
+attackList = []
 
 while not done:
     for event in pygame.event.get():
@@ -35,20 +42,29 @@ while not done:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_LEFT]:
-        player_rect.x -= vel
-    if keys[pygame.K_RIGHT]:
-        player_rect.x += vel
-    if keys[pygame.K_UP]:
-        player_rect.y -= vel
-    if keys[pygame.K_DOWN]:
-        player_rect.y += vel
+    if len(attackList) != 0:
+        if keys[pygame.K_LEFT]:
+            player_rect.x -= vel
+        if keys[pygame.K_RIGHT]:
+            player_rect.x += vel
+        if keys[pygame.K_UP]:
+            player_rect.y -= vel
+        if keys[pygame.K_DOWN]:
+            player_rect.y += vel
+
+
     screen.fill(BACKGROUND_COLOR)
+
+    if event.type == timer:
+        delay = random.random()
+        if delay < .1:
+            attackList.append(attack_surf.get_rect(center = (random.randint(900,1100),random.randint(0,600))))
 
     screen.blit(player_surf,player_rect)
     enemyFunctions.generateEnemy(screen)
-    clock.tick(30)
+    attackFunctions.attackMovement(attackList,screen,attack_surf)
+
 
     pygame.display.update()
-
+    clock.tick(30)
 pygame.quit()
