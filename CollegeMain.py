@@ -67,6 +67,8 @@ while not gameDone:
     while not levelDone:
         #level loop
 
+
+
         attackDone = False
         x = 50
         y = 275
@@ -179,16 +181,58 @@ while not gameDone:
             # levelDone = True
             numLevels = numLevels + 1
 
-            # if playerHealth != 50:
-            #     if playerHealth + 25 > 50:
-            #         playerHealth = 50
-            #     else:
-            #         playerHealth = playerHealth + 25
+            # place tempmenue here?
+            while True:
+                event = pygame.event.wait()
+
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
+                        break
+                else:
+                    screen.fill((94, 129, 162))
+                    title_message = font.render("Level Complete!", True, (0, 0, 0))
+                    title_message_rect = title_message.get_rect(center=(300, 300))
+                    play_message = font.render("Hit Enter To continue", False, (0, 0, 0))
+                    play_message_rect = play_message.get_rect(center=(300, 350))
+                    # duckie_menu = pygame.transform.scale(pygame.image.load('Assets/Sprites/duckie3.0.png'), (200, 200))
+                    # duckie_menu_rect = duckie_menu.get_rect(center=(400, 400))
+
+                    screen.blit(title_message, (225, 100))
+                    screen.blit(play_message, (225, 200))
+                    # screen.blit(duckie_menu, duckie_menu_rect)
+
+                    pygame.display.update()
 
     # numLevels = numLevels + 1
 
         if numLevels == 4:
             levelDone = True
+
+            while True:
+                event = pygame.event.wait()
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
+                        break
+                else:
+                    screen.fill((94, 129, 162))
+                    title_message = font.render("you got your degree!!!", True, (0, 0, 0))
+                    title_message_rect = title_message.get_rect(center=(300, 300))
+                    play_message = font.render("", False, (0, 0, 0))
+                    play_message_rect = play_message.get_rect(center=(300, 350))
+                    duckie_menu = pygame.transform.scale(pygame.image.load('Assets/Sprites/duckie3.0.png'), (200, 200))
+                    duckie_menu_rect = duckie_menu.get_rect(center=(400, 400))
+
+                    screen.blit(title_message, (225, 100))
+                    screen.blit(play_message, (225, 200))
+                    screen.blit(duckie_menu, duckie_menu_rect)
+
+                    pygame.display.update()
 
 
 pygame.quit()

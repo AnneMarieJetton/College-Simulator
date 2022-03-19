@@ -15,4 +15,4 @@ def getNumBullets():
     return 20
 
 def getFinalNumBullets():
-    return 3
+    return 20
