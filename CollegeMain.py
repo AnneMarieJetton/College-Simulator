@@ -32,15 +32,15 @@ while not gameDone:
 
     while True:
         event = pygame.event.wait()
-        print(event)
+
         if event.type == pygame.QUIT:
             sys.exit()
             pygame.quit()
 
         elif event.type == pygame.KEYDOWN:
-            print("break")
+            
             if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
-                print("break")
+
                 # levelDone = False
                 break
         else:
@@ -61,7 +61,7 @@ while not gameDone:
         player_surf = pygame.image.load("Assets/Sprites/TestPlayer.png").convert_alpha()
         player_rect = player_surf.get_rect(center = (x,y))
 
-        attack_surf = pygame.image.load("Assets/Sprites/PelletAttackTest.png").convert_alpha()
+        attack_surf = pygame.image.load("Assets/Sprites/Duckie.png").convert_alpha()
 
         levelTimer = 20
 
@@ -111,7 +111,7 @@ while not gameDone:
 
             screen.blit(player_surf,player_rect)
             enemyFunctions.generateEnemy(screen)
-            attackFunctions.attackMovement(attackList,screen,attack_surf)
+            attackFunctions.attackMovement(attackList,screen,attack_surf,)
 
 
             pygame.display.update()
