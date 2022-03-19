@@ -16,7 +16,7 @@ fps = 25
 
 width = 40
 height = 60
-vel = 5
+vel = 8
 
 level = 1
 timer = pygame.USEREVENT + 1
@@ -69,7 +69,7 @@ while not gameDone:
         attackDone = False
         x = 50
         y = 275
-        player_surf = pygame.image.load("Assets/Sprites/Protagonist2.png").convert_alpha()
+        player_surf = pygame.transform.scale(pygame.image.load("Assets/Sprites/Protagonist2.png"),(50,70)).convert_alpha()
         player_rect = player_surf.get_rect(center = (x,y))
 
         attack_surf = pygame.image.load("Assets/Sprites/BigDuckie.png")
@@ -99,8 +99,8 @@ while not gameDone:
 
             if player_rect.y < 65:
                 player_rect.y = 65
-            if player_rect.y > 575:
-                player_rect.y = 575
+            if player_rect.y > 525:
+                player_rect.y = 525
             if player_rect.x > 600:
                 player_rect.x = 600
             if player_rect.x < 0:
@@ -112,7 +112,7 @@ while not gameDone:
                 delay = random.random()
                 if delay < .1:
                     if levelTimer != 0:
-                        attackList.append(attack_surf.get_rect(center = (random.randint(900,1100),random.randint(100,600))))
+                        attackList.append(attack_surf.get_rect(center = (random.randint(900,1100),random.randint(100,525))))
                         levelTimer = levelTimer - 1
                         # print(len(attackList))
                     else:
@@ -131,7 +131,7 @@ while not gameDone:
             # classPlaceHolder = 1
             classString = 'Class : ' + str(classPlaceHolder)
             level_text_class = font.render(classString,False,(255,255,255))
-            level_text_class_rect = level_text_class.get_rect(center = (680,40))
+            level_text_class_rect = level_text_class.get_rect(center = (690,40))
 
             screen.blit(level_text_class,level_text_class_rect)
             screen.blit(level_text,level_text_rect)
