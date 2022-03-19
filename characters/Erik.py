@@ -11,3 +11,9 @@ def getAttack():
 
 def getFinalAttack():
     return "Assets/Sprites/duckie3.0.png"
+
+def getNumBullets():
+    return 20
+
+def getFinalNumBullets():
+    return 3

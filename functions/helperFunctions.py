@@ -40,3 +40,21 @@ def getAttackSprite(level, attack):
         if attack == 3:
             return Vladimir.getFinalAttack()
         return Vladimir.getAttack()
+
+def getNumBullets(level, attack):
+    if level == 0:
+        if attack == 3:
+            return Erik.getFinalNumBullets()
+        return Erik.getNumBullets()
+    if level == 1:
+        if attack == 3:
+            return viki.getFinalNumBullets()
+        return viki.getNumBullets()
+    if level == 2:
+        if attack == 3:
+            return Mono.getFinalNumBullets()
+        return Mono.getNumBullets()
+    if level == 3:
+        if attack == 3:
+            return Vladimir.getFinalNumBullets()
+        return Vladimir.getNumBullets()
