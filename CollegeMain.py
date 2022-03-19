@@ -94,8 +94,8 @@ while not gameDone:
                 if keys[pygame.K_DOWN]:
                     player_rect.y += vel
 
-            if player_rect.y < 0:
-                player_rect.y = 0
+            if player_rect.y < 65:
+                player_rect.y = 65
             if player_rect.y > 575:
                 player_rect.y = 575
             if player_rect.x > 600:
@@ -109,14 +109,30 @@ while not gameDone:
                 delay = random.random()
                 if delay < .1:
                     if levelTimer != 0:
-                        attackList.append(attack_surf.get_rect(center = (random.randint(900,1100),random.randint(0,600))))
+                        attackList.append(attack_surf.get_rect(center = (random.randint(900,1100),random.randint(100,600))))
                         levelTimer = levelTimer - 1
                         # print(len(attackList))
                     else:
                         # print(attackList[len(attackList) - 1].x)
                         if attackList[len(attackList) - 1].x <= 0:
                             attackDone = True
+            #HealthBar
+            #pygame.draw.rect(screen, REdm player_pos[0], width, height))
+            pygame.draw.rect(screen, (0,255,0), (10 , 10, playerHealth * 8, 50))
+            UI_text = font.render('Sleep',False,(255,255,255))
+            UI_text_rect = UI_text.get_rect(center = (75,40))
+            yearPlaceHolder = 1
+            levelString = 'Year : ' + str(yearPlaceHolder)
+            level_text = font.render(levelString,False,(255,255,255))
+            level_text_rect = level_text.get_rect(center = (500, 40))
+            classPlaceHolder = 1
+            classString = 'Class : ' + str(classPlaceHolder)
+            level_text_class = font.render(classString,False,(255,255,255))
+            level_text_class_rect = level_text_class.get_rect(center = (680,40))
 
+            screen.blit(level_text_class,level_text_class_rect)
+            screen.blit(level_text,level_text_rect)
+            screen.blit(UI_text,UI_text_rect)
             screen.blit(player_surf,player_rect)
             enemyFunctions.generateEnemy(screen)
             attackFunctions.attackMovement(attackList,screen,attack_surf,)
@@ -129,8 +145,12 @@ while not gameDone:
             if playerHealth <= 0:
                 attackDone = True
 
+        classPlaceHolder += 1
         numAttacks = numAttacks + 1
 
+
         if numAttacks == 4:
+            yearPlaceHolder += 1
             levelDone = True
+
 pygame.quit()
