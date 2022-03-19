@@ -18,7 +18,6 @@ def collisions(player, attacks, playerHealth):
         for attackRect in attacks:
             if player.colliderect(attackRect):
                 playerHealth = playerHealth - 1
-                print(playerHealth)
                 return playerHealth
     return playerHealth
 

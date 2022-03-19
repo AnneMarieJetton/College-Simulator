@@ -23,28 +23,25 @@ level = 1
 timer = pygame.USEREVENT + 1
 pygame.time.set_timer(timer,1)
 attackList = []
-levelDone = True
 playerHealth = 50
-
-levelTimer = 20
 
 font = pygame.font.SysFont("Calibri",50,True,False)
 gameDone = False
+
 while not gameDone:
-    #menu loop
-    screen.fill((94, 129, 162))
-    title_message = font.render("College Simulator", True, (111, 196, 169))
-    title_message_rect = title_message.get_rect(center= (400, 330))
-    screen.blit(title_message, (400,330))
-    for event in pygame.event.get():
+
+    while True:
+        event = pygame.event.wait()
+        print(event)
         if event.type == pygame.QUIT:
             sys.exit()
             pygame.quit()
 
         elif event.type == pygame.KEYDOWN:
+            print("break")
             if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
                 print("break")
-                levelDone = False
+                # levelDone = False
                 break
         else:
             screen.fill((94, 129, 162))
@@ -53,16 +50,10 @@ while not gameDone:
             screen.blit(title_message, (400, 330))
             pygame.display.update()
 
-
-
+    levelDone = False
+    numAttacks = 0
     while not levelDone:
-        numAttacks = 0
         #level loop
-
-
-
-
-
 
         attackDone = False
         x = 50
@@ -72,7 +63,7 @@ while not gameDone:
 
         attack_surf = pygame.image.load("Assets/Sprites/PelletAttackTest.png").convert_alpha()
 
-
+        levelTimer = 20
 
 
         while not attackDone:
@@ -131,6 +122,7 @@ while not gameDone:
                 attackDone = True
 
         numAttacks = numAttacks + 1
+        print(numAttacks)
         if numAttacks == 4:
             levelDone = True
 pygame.quit()
