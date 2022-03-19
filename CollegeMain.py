@@ -137,7 +137,7 @@ while not gameDone:
             screen.blit(level_text,level_text_rect)
             screen.blit(UI_text,UI_text_rect)
             screen.blit(player_surf,player_rect)
-            enemyFunctions.generateEnemy(screen)
+            enemyFunctions.generateEnemy(screen, numAttacks)
             attackFunctions.attackMovement(attackList,screen,attack_surf,)
 
 
