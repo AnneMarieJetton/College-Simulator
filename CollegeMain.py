@@ -76,7 +76,8 @@ while not gameDone:
         # attack_surf = pygame.image.load(attackSprite)
         # heal_surf = pygame.image.load("Assets/Sprites/EnergyDrink.png")
 
-        levelTimer = 20
+        # levelTimer = 20
+        levelTimer = helperFunctions.getNumBullets(numLevels, numAttacks)
 
 
         while not attackDone:

@@ -1,7 +1,7 @@
 
 
 def getQuotes():
-    return ["Theory Of Computability!", "BLANK", "Could be worse, we could be in game dev right now.", "COMPILERS!!!"]
+    return ["Theory Of Computability!", "Huh. that wasn't supposed to happen.", "that's a big error.", "COMPILERS!!!"]
 
 
 def getArt():
@@ -11,4 +11,10 @@ def getAttack():
     return "Assets/Sprites/binaryTree.png"
 
 def getFinalAttack():
-    return "Assets/Sprites/binaryTree.png"
+    return "Assets/Sprites/error.png"
+
+def getNumBullets():
+    return 20
+
+def getFinalNumBullets():
+    return 3
