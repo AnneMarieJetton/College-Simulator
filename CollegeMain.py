@@ -17,6 +17,9 @@ clock = pygame.time.Clock()
 fps = 25
 
 while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
     screen.fill(BACKGROUND_COLOR)
     clock.tick(30)
     pygame.display.update()
