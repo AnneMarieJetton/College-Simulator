@@ -47,6 +47,7 @@ while not done:
     if len(attackList) != 0:
         if keys[pygame.K_LEFT]:
             player_rect.x -= vel
+            print(player_rect.x)
         if keys[pygame.K_RIGHT]:
             player_rect.x += vel
         if keys[pygame.K_UP]:
@@ -54,6 +55,14 @@ while not done:
         if keys[pygame.K_DOWN]:
             player_rect.y += vel
 
+    if player_rect.y < 0:
+        player_rect.y = 0
+    if player_rect.y > 575:
+        player_rect.y = 575
+    if player_rect.x > 600:
+        player_rect.x = 600
+    if player_rect.x < 0:
+        player_rect.x = 0
 
     screen.fill(BACKGROUND_COLOR)
 
@@ -71,4 +80,6 @@ while not done:
     clock.tick(30)
 
     playerHealth = attackFunctions.collisions(player_rect, attackList, playerHealth)
+    if playerHealth <= 0:
+        done = True
 pygame.quit()
