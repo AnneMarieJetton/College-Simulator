@@ -5,6 +5,7 @@ import sys
 import random
 from functions import enemyFunctions
 from functions import attackFunctions
+from functions import helperFunctions
 
 pygame.init()
 
@@ -80,6 +81,8 @@ while not gameDone:
 
         while not attackDone:
             #attack loop
+            sprite = helperFunctions.getSprite(numLevels)
+            quotes = helperFunctions.getQuotes(numLevels)
 
 
             for event in pygame.event.get():
@@ -141,7 +144,7 @@ while not gameDone:
             screen.blit(level_text,level_text_rect)
             screen.blit(UI_text,UI_text_rect)
             screen.blit(player_surf,player_rect)
-            enemyFunctions.generateEnemy(screen, numAttacks, ['', '', '', ''], 'Assets/Sprites/Vladimir.png')
+            enemyFunctions.generateEnemy(screen, numAttacks, quotes, sprite)
             attackFunctions.attackMovement(attackList,screen,attack_surf)
             attackFunctions.healMovement(healList, screen, heal_surf)
 
