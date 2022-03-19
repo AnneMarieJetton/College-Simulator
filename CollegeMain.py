@@ -225,7 +225,7 @@ while not gameDone:
                     title_message_rect = title_message.get_rect(center=(300, 300))
                     play_message = font.render("", False, (0, 0, 0))
                     play_message_rect = play_message.get_rect(center=(300, 350))
-                    duckie_menu = pygame.transform.scale(pygame.image.load('Assets/Sprites/duckie3.0.png'), (200, 200))
+                    duckie_menu = pygame.transform.scale(pygame.image.load('Assets/Sprites/diploma.png'), (200, 200))
                     duckie_menu_rect = duckie_menu.get_rect(center=(400, 400))
 
                     screen.blit(title_message, (225, 100))
