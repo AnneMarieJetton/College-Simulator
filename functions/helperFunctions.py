@@ -13,7 +13,7 @@ def getQuotes(level):
     if level == 3:
         return Vladimir.getQuotes()
 
-def getSprite(level):
+def getEnemySprite(level):
     if level == 0:
         return Erik.getArt()
     if level == 1:
@@ -22,3 +22,21 @@ def getSprite(level):
         return Mono.getArt()
     if level == 3:
         return Vladimir.getArt()
+
+def getAttackSprite(level, attack):
+    if level == 0:
+        if attack == 3:
+            return Erik.getFinalAttack()
+        return Erik.getAttack()
+    if level == 1:
+        if attack == 3:
+            return viki.getFinalAttack()
+        return viki.getAttack()
+    if level == 2:
+        if attack == 3:
+            return Mono.getFinalAttack()
+        return Mono.getAttack()
+    if level == 3:
+        if attack == 3:
+            return Vladimir.getFinalAttack()
+        return Vladimir.getAttack()
