@@ -13,3 +13,12 @@ def attackMovement(attackList,screen,bullet):
         return []
 
 
+def collisions(player, attacks, playerHealth):
+    if attacks:
+        for attackRect in attacks:
+            if player.colliderect(attackRect):
+                playerHealth = playerHealth - 1
+                print(playerHealth)
+                return playerHealth
+    return playerHealth
+

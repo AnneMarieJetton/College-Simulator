@@ -35,6 +35,8 @@ timer = pygame.USEREVENT + 1
 pygame.time.set_timer(timer,1)
 attackList = []
 
+playerHealth = 1000
+
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -67,4 +69,6 @@ while not done:
 
     pygame.display.update()
     clock.tick(30)
+
+    playerHealth = attackFunctions.collisions(player_rect, attackList, playerHealth)
 pygame.quit()
