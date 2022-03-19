@@ -28,6 +28,9 @@ font = pygame.font.Font("Assets/Fonts/Pixeltype.ttf",75)
 gameDone = False
 
 while not gameDone:
+    numLevels = 0
+    yearPlaceHolder = 1
+    classPlaceHolder = 1
 
     while True:
         event = pygame.event.wait()
@@ -121,11 +124,11 @@ while not gameDone:
             pygame.draw.rect(screen, (0,255,0), (10 , 10, playerHealth * 8, 50))
             UI_text = font.render('Sleep',False,(255,255,255))
             UI_text_rect = UI_text.get_rect(center = (75,40))
-            yearPlaceHolder = 1
+            # yearPlaceHolder = 1
             levelString = 'Year : ' + str(yearPlaceHolder)
             level_text = font.render(levelString,False,(255,255,255))
             level_text_rect = level_text.get_rect(center = (500, 40))
-            classPlaceHolder = 1
+            # classPlaceHolder = 1
             classString = 'Class : ' + str(classPlaceHolder)
             level_text_class = font.render(classString,False,(255,255,255))
             level_text_class_rect = level_text_class.get_rect(center = (680,40))
@@ -144,13 +147,23 @@ while not gameDone:
             playerHealth = attackFunctions.collisions(player_rect, attackList, playerHealth)
             if playerHealth <= 0:
                 attackDone = True
+                levelDone = True
 
         classPlaceHolder += 1
         numAttacks = numAttacks + 1
 
 
         if numAttacks == 4:
+            numAttacks = 0
             yearPlaceHolder += 1
+            classPlaceHolder = 1
+            # levelDone = True
+            numLevels = numLevels + 1
+
+    # numLevels = numLevels + 1
+
+        if numLevels == 4:
             levelDone = True
+
 
 pygame.quit()
