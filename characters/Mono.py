@@ -10,7 +10,7 @@ def getAttack():
     return "Assets/Sprites/SnowMan.png"
 
 def getFinalAttack():
-    return "Assets/Sprites/snowman2.0.png"
+    return "Assets/Sprites/snowman2.png"
 
 def getNumBullets():
     return 20
