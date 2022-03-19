@@ -36,6 +36,7 @@ while not gameDone:
         event = pygame.event.wait()
         playerHealth = 50
         attackList = []
+        healList = []
         if event.type == pygame.QUIT:
 
             pygame.quit()
@@ -72,6 +73,7 @@ while not gameDone:
         player_rect = player_surf.get_rect(center = (x,y))
 
         attack_surf = pygame.image.load("Assets/Sprites/BigDuckie.png")
+        heal_surf = pygame.image.load("Assets/Sprites/EnergyDrink.png")
 
         levelTimer = 20
 
@@ -113,21 +115,24 @@ while not gameDone:
                     if levelTimer != 0:
                         attackList.append(attack_surf.get_rect(center = (random.randint(900,1100),random.randint(100,525))))
                         levelTimer = levelTimer - 1
+                        if levelTimer % 6 == 0:
+                            healList.append(
+                                heal_surf.get_rect(center=(random.randint(900, 1100), random.randint(100, 525))))
                         # print(len(attackList))
                     else:
                         # print(attackList[len(attackList) - 1].x)
                         if attackList[len(attackList) - 1].x <= 0:
                             attackDone = True
+
+
             #HealthBar
             #pygame.draw.rect(screen, REdm player_pos[0], width, height))
             pygame.draw.rect(screen, (0,255,0), (10 , 10, playerHealth * 8, 50))
             UI_text = font.render('Sleep',False,(255,255,255))
             UI_text_rect = UI_text.get_rect(center = (75,40))
-            # yearPlaceHolder = 1
             levelString = 'Year : ' + str(yearPlaceHolder)
             level_text = font.render(levelString,False,(255,255,255))
             level_text_rect = level_text.get_rect(center = (500, 40))
-            # classPlaceHolder = 1
             classString = 'Class : ' + str(classPlaceHolder)
             level_text_class = font.render(classString,False,(255,255,255))
             level_text_class_rect = level_text_class.get_rect(center = (690,40))
@@ -136,14 +141,16 @@ while not gameDone:
             screen.blit(level_text,level_text_rect)
             screen.blit(UI_text,UI_text_rect)
             screen.blit(player_surf,player_rect)
-            enemyFunctions.generateEnemy(screen, numAttacks)
-            attackFunctions.attackMovement(attackList,screen,attack_surf,)
+            enemyFunctions.generateEnemy(screen, numAttacks, ['', '', '', ''], 'Assets/Sprites/Vladimir.png')
+            attackFunctions.attackMovement(attackList,screen,attack_surf)
+            attackFunctions.healMovement(healList, screen, heal_surf)
 
 
             pygame.display.update()
             clock.tick(30)
 
             playerHealth = attackFunctions.collisions(player_rect, attackList, playerHealth)
+            playerHealth = attackFunctions.heal(player_rect, healList, playerHealth)
             if playerHealth <= 0:
                 attackDone = True
                 levelDone = True
@@ -158,6 +165,12 @@ while not gameDone:
             classPlaceHolder = 1
             # levelDone = True
             numLevels = numLevels + 1
+
+            # if playerHealth != 50:
+            #     if playerHealth + 25 > 50:
+            #         playerHealth = 50
+            #     else:
+            #         playerHealth = playerHealth + 25
 
     # numLevels = numLevels + 1
 
