@@ -1,13 +1,12 @@
 import pygame
 import random
 
-def generateEnemy(screen, numAttacks):
+def generateEnemy(screen, numAttacks, textList, spritePath):
 
-    #text picking.
-    textList = ["Talk to your Ducky", "Eval is Evil!", "Scrum Meeting!", "Cheating is bad!!!"]
 
+    #["Talk to your Ducky", "Eval is Evil!", "Scrum Meeting!", "Cheating is bad!!!"]
     font = pygame.font.Font('Assets/Fonts/Pixeltype.ttf', 30)
-    enemy_surf = pygame.transform.scale2x(pygame.image.load("Assets/Sprites/pixil-frame-0.png")).convert_alpha()
+    enemy_surf = pygame.transform.scale2x(pygame.image.load(str(spritePath))).convert_alpha()
     enemy_rect = enemy_surf.get_rect(center = (700,275))
     if numAttacks == 1:
         enemy_speech = font.render(str(textList[0]),False,(225,225,225))
