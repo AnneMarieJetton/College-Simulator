@@ -15,11 +15,13 @@ BACKGROUND_COLOR = (0, 0, 0)
 
 screen = pygame.display.set_mode(size)
 done = False
-
-clock = pygame.time.Clock()
-fps = 25
 x = 50
 y = 275
+player_surf = pygame.image.load("Assets/Sprites/TestPlayer.png")
+player_rect = player_surf.get_rect(center = (x,y))
+clock = pygame.time.Clock()
+fps = 25
+
 width = 40
 height = 60
 vel = 5
@@ -34,17 +36,16 @@ while not done:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_LEFT]:
-        x -= vel
+        player_rect.x -= vel
     if keys[pygame.K_RIGHT]:
-        x += vel
+        player_rect.x += vel
     if keys[pygame.K_UP]:
-        y -= vel
+        player_rect.y -= vel
     if keys[pygame.K_DOWN]:
-        y += vel
-
+        player_rect.y += vel
     screen.fill(BACKGROUND_COLOR)
 
-    pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height))
+    screen.blit(player_surf,player_rect)
     enemyFunctions.generateEnemy(screen)
     clock.tick(30)
 
