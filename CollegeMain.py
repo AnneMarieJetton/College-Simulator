@@ -6,49 +6,74 @@ import random
 from functions import enemyFunctions
 from functions import attackFunctions
 
-
-
 pygame.init()
 
+
+screen = pygame.display.set_mode((800,600))
+pygame.display.set_caption('College Simulator')
+clock = pygame.time.Clock()
+BACKGROUND_COLOR = (0, 0, 0)
+fps = 25
+
+width = 40
+height = 60
+vel = 5
+
+level = 1
+timer = pygame.USEREVENT + 1
+pygame.time.set_timer(timer,1)
+attackList = []
+levelDone = True
+playerHealth = 50
+
+levelTimer = 20
+
+font = pygame.font.SysFont("Calibri",50,True,False)
 gameDone = False
 while not gameDone:
     #menu loop
+    screen.fill((94, 129, 162))
+    title_message = font.render("College Simulator", True, (111, 196, 169))
+    title_message_rect = title_message.get_rect(center= (400, 330))
+    screen.blit(title_message, (400,330))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+            pygame.quit()
 
-    
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
+                print("break")
+                levelDone = False
+                break
+        else:
+            screen.fill((94, 129, 162))
+            title_message = font.render("College Simulator", True, (111, 196, 169))
+            title_message_rect = title_message.get_rect(center=(400, 330))
+            screen.blit(title_message, (400, 330))
+            pygame.display.update()
 
-    levelDone = False
+
+
     while not levelDone:
         numAttacks = 0
         #level loop
 
-        size = (800, 600)
 
-        BACKGROUND_COLOR = (0, 0, 0)
 
-        screen = pygame.display.set_mode(size)
+
+
+
         attackDone = False
         x = 50
         y = 275
-        player_surf = pygame.image.load("Assets/Sprites/TestPlayer.png")
+        player_surf = pygame.image.load("Assets/Sprites/TestPlayer.png").convert_alpha()
         player_rect = player_surf.get_rect(center = (x,y))
 
-        attack_surf = pygame.image.load("Assets/Sprites/PelletAttackTest.png")
+        attack_surf = pygame.image.load("Assets/Sprites/PelletAttackTest.png").convert_alpha()
 
-        clock = pygame.time.Clock()
-        fps = 25
 
-        width = 40
-        height = 60
-        vel = 5
 
-        level = 1
-        timer = pygame.USEREVENT + 1
-        pygame.time.set_timer(timer,1)
-        attackList = []
-
-        playerHealth = 50
-
-        levelTimer = 20
 
         while not attackDone:
             #attack loop
