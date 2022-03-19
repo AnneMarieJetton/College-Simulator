@@ -73,16 +73,25 @@ while not gameDone:
         player_surf = pygame.transform.scale(pygame.image.load("Assets/Sprites/Protagonist2.png"),(50,70)).convert_alpha()
         player_rect = player_surf.get_rect(center = (x,y))
 
-        attack_surf = pygame.image.load("Assets/Sprites/BigDuckie.png")
-        heal_surf = pygame.image.load("Assets/Sprites/EnergyDrink.png")
+        # attack_surf = pygame.image.load(attackSprite)
+        # heal_surf = pygame.image.load("Assets/Sprites/EnergyDrink.png")
 
         levelTimer = 20
 
 
         while not attackDone:
             #attack loop
-            sprite = helperFunctions.getSprite(numLevels)
+            enemySprite = helperFunctions.getEnemySprite(numLevels)
             quotes = helperFunctions.getQuotes(numLevels)
+            attackSprite = helperFunctions.getAttackSprite(numLevels, numAttacks)
+
+            attack_surf = pygame.image.load(attackSprite)
+            heal_surf = pygame.image.load("Assets/Sprites/EnergyDrink.png")
+
+
+            #amount of bullets
+            #speed of bullets
+            #amount of health items
 
 
             for event in pygame.event.get():
@@ -144,7 +153,7 @@ while not gameDone:
             screen.blit(level_text,level_text_rect)
             screen.blit(UI_text,UI_text_rect)
             screen.blit(player_surf,player_rect)
-            enemyFunctions.generateEnemy(screen, numAttacks, quotes, sprite)
+            enemyFunctions.generateEnemy(screen, numAttacks, quotes, enemySprite)
             attackFunctions.attackMovement(attackList,screen,attack_surf)
             attackFunctions.healMovement(healList, screen, heal_surf)
 

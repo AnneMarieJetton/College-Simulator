@@ -5,3 +5,9 @@ def getQuotes():
 
 def getArt():
     return "Assets/Sprites/pixil-frame-0.png"
+
+def getAttack():
+    return "Assets/Sprites/BigDuckie.png"
+
+def getFinalAttack():
+    return "Assets/Sprites/duckie3.0.png"
