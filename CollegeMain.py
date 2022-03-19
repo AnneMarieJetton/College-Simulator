@@ -8,7 +8,6 @@ from functions import attackFunctions
 
 pygame.init()
 
-
 screen = pygame.display.set_mode((800,600))
 pygame.display.set_caption('College Simulator')
 clock = pygame.time.Clock()
@@ -32,11 +31,12 @@ while not gameDone:
 
     while True:
         event = pygame.event.wait()
-
+        playerHealth = 50
+        attackList = []
         if event.type == pygame.QUIT:
-            sys.exit()
-            pygame.quit()
 
+            pygame.quit()
+            sys.exit()
         elif event.type == pygame.KEYDOWN:
             
             if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
@@ -46,8 +46,11 @@ while not gameDone:
         else:
             screen.fill((94, 129, 162))
             title_message = font.render("College Simulator", True, (111, 196, 169))
-            title_message_rect = title_message.get_rect(center=(400, 330))
-            screen.blit(title_message, (400, 330))
+            title_message_rect = title_message.get_rect(center=(300, 300))
+            play_message = font.render("Hit Enter To Play", False, (111,196,169))
+            play_message_rect = play_message.get_rect(center = (300,350))
+            screen.blit(title_message, (250, 300))
+            screen.blit(play_message,(250,400))
             pygame.display.update()
 
     levelDone = False
@@ -58,10 +61,10 @@ while not gameDone:
         attackDone = False
         x = 50
         y = 275
-        player_surf = pygame.image.load("Assets/Sprites/TestPlayer.png").convert_alpha()
+        player_surf = pygame.image.load("Assets/Sprites/Protagonist2.png").convert_alpha()
         player_rect = player_surf.get_rect(center = (x,y))
 
-        attack_surf = pygame.image.load("Assets/Sprites/Duckie.png").convert_alpha()
+        attack_surf = pygame.image.load("Assets/Sprites/BigDuckie.png")
 
         levelTimer = 20
 
@@ -122,7 +125,7 @@ while not gameDone:
                 attackDone = True
 
         numAttacks = numAttacks + 1
-        print(numAttacks)
+
         if numAttacks == 4:
             levelDone = True
 pygame.quit()
