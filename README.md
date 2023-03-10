@@ -1,11 +1,6 @@
 # College-Simulator
+
 the most high quality game ever created!!
-helloworld
+(This is a joke, the game is rather simple)
 
-
-
-
-
-
-
-(this is a joke, the game is in fact very low quality.)
+Welcome to college simulator, a game where you can battle it out with your professors! Made for the 2022 USU hackathon, this game makes use of pygame to create a fun experience.
